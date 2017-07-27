@@ -1,0 +1,9 @@
+EDIT ./small_8x16.brd
+DISPLAY None
+SET COLOR_LAYER bPlace 7
+DISPLAY Bottom Pads Vias Dimension bPlace
+EXPORT IMAGE ./bottom.png 600
+DISPLAY None
+DISPLAY Top Pads Vias Dimension tPlace
+EXPORT IMAGE ./top.png 600
+QUIT

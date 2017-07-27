@@ -1,0 +1,7 @@
+#./png2int.py
+#./st2chi.py
+avrdude -c avrispmkII -p m328p -B1 -P /dev/ttyUSB0 -F &&\
+avr-gcc -Os -mmcu=atmega328 ./bat.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -c avrispmkII -p m328p -B1 -P /dev/ttyUSB0 -F -U flash:w:a.bin
+

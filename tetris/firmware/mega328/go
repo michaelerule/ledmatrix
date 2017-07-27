@@ -1,0 +1,10 @@
+#./png2int.py
+#./blues.py | tee blues.c &&\
+#./scale.py | tee scale.c &&\
+#./chromatic_up.py | tee chromatic_up.c &&\
+#./chromatic_down.py | tee chromatic_down.c &&\
+avr-gcc -Os -mmcu=atmega328 ./display_v6.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -F -c avrispmkII -p m328p -B1 -P /dev/ttyUSB2 -F -U flash:w:a.bin
+avrdude -c avrispmkII -p m328p -B1 -P /dev/ttyUSB2 -U lfuse:w:0xE2:m 
+

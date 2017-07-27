@@ -1,0 +1,140 @@
+\hypertarget{SpectrumGraphics_8h}{\section{\-Spectrum\-Graphics.\-h \-File \-Reference}
+\label{SpectrumGraphics_8h}\index{\-Spectrum\-Graphics.\-h@{\-Spectrum\-Graphics.\-h}}
+}
+
+
+\-Graphics \-A\-P\-I for \-Open \-Spectrum \-Analyzer.  
+
+
+{\ttfamily \#include \char`\"{}\-Spectrum\-Display.\-h\char`\"{}}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}{\#define \hyperlink{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}{\-N\-C\-O\-L\-O\-R\-S}~6}\label{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}
+
+\begin{DoxyCompactList}\small\item\em number of gamma corrected display colors \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}{\#define \hyperlink{SpectrumGraphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}{\-W\-H\-I\-T\-E}~(\hyperlink{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}{\-N\-C\-O\-L\-O\-R\-S}-\/1)}\label{SpectrumGraphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}
+
+\begin{DoxyCompactList}\small\item\em brigtest color \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_adce122f566c88a1eceeb79a635afa964}{\#define \hyperlink{SpectrumGraphics_8h_adce122f566c88a1eceeb79a635afa964}{\-G\-R\-E\-Y}~(\hyperlink{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}{\-N\-C\-O\-L\-O\-R\-S}/2)}\label{SpectrumGraphics_8h_adce122f566c88a1eceeb79a635afa964}
+
+\begin{DoxyCompactList}\small\item\em intermediate brightness color \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a7b3b25cba33b07c303f3060fe41887f6}{\#define \hyperlink{SpectrumGraphics_8h_a7b3b25cba33b07c303f3060fe41887f6}{\-B\-L\-A\-C\-K}~0}\label{SpectrumGraphics_8h_a7b3b25cba33b07c303f3060fe41887f6}
+
+\begin{DoxyCompactList}\small\item\em off \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{SpectrumGraphics_8h_ae2b9714f54cc31b9c25060c73f8e0b32}{set\-Pixel} (uint8\-\_\-t r, uint8\-\_\-t c, uint8\-\_\-t v)
+\begin{DoxyCompactList}\small\item\em \-Sets pixel data at a given row, column ( no bounds check is performed ). \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{SpectrumGraphics_8h_aafd05e0a3a9d8eb74397a666687200bb}{get\-Pixel} (uint8\-\_\-t r, uint8\-\_\-t c)
+\begin{DoxyCompactList}\small\item\em \-Retrieves pixel data at a given row, column ( \-Caution\-: no bounds checking is performed ). \end{DoxyCompactList}\item 
+void \hyperlink{SpectrumGraphics_8h_ab385d201045f7ff099dcb4e94bc10ecb}{set\-Color} (int16\-\_\-t r, int16\-\_\-t c, int8\-\_\-t v)
+\begin{DoxyCompactList}\small\item\em \-Sets pixel value with gamma correction. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{void \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show} ()}\label{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}
+
+\begin{DoxyCompactList}\small\item\em \-Flips the drawing and display buffers, required to show the results of drawing commands. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_aaeffc72a50e3933103949c865b9be5eb}{void \hyperlink{SpectrumGraphics_8h_aaeffc72a50e3933103949c865b9be5eb}{clear\-Drawing} ()}\label{SpectrumGraphics_8h_aaeffc72a50e3933103949c865b9be5eb}
+
+\begin{DoxyCompactList}\small\item\em \-Clears ( sets to black ) the drawing buffer, \-Remember to call \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show()} to see the results on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a6eb4003bee673b00188d2ff04717c3e0}{void \hyperlink{SpectrumGraphics_8h_a6eb4003bee673b00188d2ff04717c3e0}{scroll\-Down} ()}\label{SpectrumGraphics_8h_a6eb4003bee673b00188d2ff04717c3e0}
+
+\begin{DoxyCompactList}\small\item\em \-Scrolls the current visible screen down one pixel, call \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show()} to see the results on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a5cb5135b6111e4f91dacba76b8a71d40}{void \hyperlink{SpectrumGraphics_8h_a5cb5135b6111e4f91dacba76b8a71d40}{scroll\-Up} ()}\label{SpectrumGraphics_8h_a5cb5135b6111e4f91dacba76b8a71d40}
+
+\begin{DoxyCompactList}\small\item\em \-Scrolls the current visible screen up one pixel, call \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show()} to see the results on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a0a1501dc502fde5af9ca08751e0d676f}{void \hyperlink{SpectrumGraphics_8h_a0a1501dc502fde5af9ca08751e0d676f}{diagonal} ()}\label{SpectrumGraphics_8h_a0a1501dc502fde5af9ca08751e0d676f}
+
+\begin{DoxyCompactList}\small\item\em \-A display test pattern that lights all pixels along the diagonal, \-Results will automatically be shown on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_a2fb9cc7f0efc38c255dd85df2b0ab1a5}{void \hyperlink{SpectrumGraphics_8h_a2fb9cc7f0efc38c255dd85df2b0ab1a5}{row\-Greyscale} ()}\label{SpectrumGraphics_8h_a2fb9cc7f0efc38c255dd85df2b0ab1a5}
+
+\begin{DoxyCompactList}\small\item\em \-A display test patterns demonstrating brightness levels, \-Results will automatically be shown on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_aabd93597ad4df776a2196f13623caeb2}{void \hyperlink{SpectrumGraphics_8h_aabd93597ad4df776a2196f13623caeb2}{chex} ()}\label{SpectrumGraphics_8h_aabd93597ad4df776a2196f13623caeb2}
+
+\begin{DoxyCompactList}\small\item\em \-A display test pattern lighting every other pixel in a checkerboard pattern, \-Results will automatically be shown on screen. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumGraphics_8h_aa1ab7f8d066f5a326df2bcb8acfb9c25}{void \hyperlink{SpectrumGraphics_8h_aa1ab7f8d066f5a326df2bcb8acfb9c25}{all\-On} ()}\label{SpectrumGraphics_8h_aa1ab7f8d066f5a326df2bcb8acfb9c25}
+
+\begin{DoxyCompactList}\small\item\em \-A display test pattern that sets all pixels to their full brightness, \-Results will automatically be shown on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumGraphics_8h_aad271a329a06f5be0cc72da45673f051}{const uint8\-\_\-t \hyperlink{SpectrumGraphics_8h_aad271a329a06f5be0cc72da45673f051}{\-C\-O\-L\-O\-R\-S} \mbox{[}\hyperlink{SpectrumGraphics_8h_ad683425316571fc55dcea736f6011316}{\-N\-C\-O\-L\-O\-R\-S}\mbox{]} = \{0,1,2,3,5,7\}}\label{SpectrumGraphics_8h_aad271a329a06f5be0cc72da45673f051}
+
+\begin{DoxyCompactList}\small\item\em gamma correction map \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Graphics \-A\-P\-I for \-Open \-Spectrum \-Analyzer. \begin{DoxyDate}{\-Date}
+\-August, 2013 
+\end{DoxyDate}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{SpectrumGraphics_8h_aafd05e0a3a9d8eb74397a666687200bb}{\index{\-Spectrum\-Graphics.\-h@{\-Spectrum\-Graphics.\-h}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!SpectrumGraphics.h@{\-Spectrum\-Graphics.\-h}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf get\-Pixel} (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{r, }
+\item[{uint8\-\_\-t}]{c}
+\end{DoxyParamCaption}
+)}}\label{SpectrumGraphics_8h_aafd05e0a3a9d8eb74397a666687200bb}
+
+
+\-Retrieves pixel data at a given row, column ( \-Caution\-: no bounds checking is performed ). 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em r} & row \\
+\hline
+{\em c} & column \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Return values}
+{\em a} & uint8\-\_\-t representing currently displayed (r,c) \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{SpectrumGraphics_8h_ab385d201045f7ff099dcb4e94bc10ecb}{\index{\-Spectrum\-Graphics.\-h@{\-Spectrum\-Graphics.\-h}!set\-Color@{set\-Color}}
+\index{set\-Color@{set\-Color}!SpectrumGraphics.h@{\-Spectrum\-Graphics.\-h}}
+\subsubsection[{set\-Color}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf set\-Color} (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{r, }
+\item[{int16\-\_\-t}]{c, }
+\item[{int8\-\_\-t}]{v}
+\end{DoxyParamCaption}
+)}}\label{SpectrumGraphics_8h_ab385d201045f7ff099dcb4e94bc10ecb}
+
+
+\-Sets pixel value with gamma correction. 
+
+\-Bounds checking is performed. color values are mapped to display brightness values using the \-C\-O\-L\-O\-R\-S array. \-The number of supported colors is defined by \-N\-C\-O\-L\-O\-R\-S. \-Results are drawn to the drawing buffer and are not immediately available on screen. \-Call \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show()} to make the results of drawing available on screen. 
+\begin{DoxyParams}{\-Parameters}
+{\em r} & row \\
+\hline
+{\em c} & column \\
+\hline
+{\em v} & value between 0 and \-N\-C\-O\-L\-O\-R\-S-\/1 \\
+\hline
+\end{DoxyParams}
+\hypertarget{SpectrumGraphics_8h_ae2b9714f54cc31b9c25060c73f8e0b32}{\index{\-Spectrum\-Graphics.\-h@{\-Spectrum\-Graphics.\-h}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!SpectrumGraphics.h@{\-Spectrum\-Graphics.\-h}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf set\-Pixel} (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{r, }
+\item[{uint8\-\_\-t}]{c, }
+\item[{uint8\-\_\-t}]{v}
+\end{DoxyParamCaption}
+)}}\label{SpectrumGraphics_8h_ae2b9714f54cc31b9c25060c73f8e0b32}
+
+
+\-Sets pixel data at a given row, column ( no bounds check is performed ). 
+
+\-Results are drawn to the drawing buffer and are not immediately available on screen. \-Call \hyperlink{SpectrumGraphics_8h_a4b148f40a95444d5669406b918ad2f52}{show()} to make the results of drawing visible. 
+\begin{DoxyParams}{\-Parameters}
+{\em r} & row between 0 and \-N\-R\-O\-W\-S-\/1 \\
+\hline
+{\em c} & column between 0 and \-N\-C\-O\-L\-S-\/1 \\
+\hline
+{\em v} & pixel data between 0 and 2$^\wedge$\-B\-I\-T\-D\-E\-P\-T\-H-\/1 \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,5 @@
+#./png2int.py
+avr-gcc -Os -mmcu=atmega48 ./display.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -c avrispmkII -p m48 -B10 -P /dev/ttyUSB1 -U flash:w:a.bin
+

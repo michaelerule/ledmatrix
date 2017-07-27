@@ -1,0 +1,184 @@
+/*
+
+Hardware notes
+===============================================================================
+
+	DDRx   : 1 = output, 0 = input
+	PORTx : output buffer
+	PINx  : digital input buffer ( writes set pullups )
+	Port B is the chip IO port ( other ports are control registers )
+
+		AtTiny24 pinout:
+		            __ __
+		3     VCC -|  U  |- GND    1
+		  BCK PB0 -|     |- PA0 G1
+		  SHU PB1 -|     |- PA1 B1
+		4 RST PB3 -|     |- PA2 R1
+		  PLY PB2 -|     |- PA3 G2 
+		  FWD PA7 -|     |- PA4 B2 5
+		2 IND PA6 -|_____|- PA5 R2 6
+		        
+		Programmer pinout, 6 pin:
+		        
+		6 MISO +-+  VCC 3
+		5 SCK  + + MOSI 2 
+		4 RST  +-+  GND 1
+		
+		Programmer pinout, 10 pin:
+		        
+		3 vcc  +-+   MOSI 2
+		       + +    
+		       + +]  RST  4 
+		       + +   SCK  5 
+		1 gnd  +-+   MISO 6
+		
+	PORT : write to here to set output
+	DDR  : write to here to set IO. 1 for output.
+	PIN  : pull ups ? digital input ?
+
+thanks to http://brownsofa.org/blog/archives/215 for explaining timer interrupts
+
+=============================================================================*/
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+#define NOP __asm__("nop\n\t")
+#define VAR uint8_t
+#define DEF void
+
+#define N 10
+#define NN ((N)*(N))
+
+// we use 11 pins to drive the display
+// the IO states are cached here
+// we use bit fields to avoid some shifting and masking later
+typedef struct {
+   unsigned ddr : 11;
+} d_state;
+
+uint16_t rng = 79;
+
+VAR life[N][N];
+VAR liFlag=0;
+
+d_state buffer0[N+1];
+d_state buffer1[N+1];
+
+d_state *buffState = &buffer1[0];
+d_state *dispState = &buffer0[0];
+volatile VAR scanI = 0;
+
+uint16_t random() {
+	return rng = (31*rng+13)%0x4CE3;
+}
+
+DEF delay(uint8_t k) {
+	for (;k;k--) NOP;
+}
+
+DEF flipDisplay() {
+	d_state *temp = buffState;
+	buffState = dispState;
+	dispState = temp;
+}
+
+ISR(TIM0_OVF_vect) {
+	d_state d = dispState[scanI];
+	uint16_t pin = ~(1<<scanI);
+	DDRA  = 0    ; DDRB  = 0;
+	PORTA = pin  ; PORTB = pin  >>8;
+	DDRA  = d.ddr; DDRB  = d.ddr>>8;
+	if (++scanI>N) scanI=0;
+}
+
+DEF flipLight(VAR r,VAR c,d_state *d) {
+	d[r==c?N:c].ddr |= 1<<r;
+}
+VAR getLight(VAR r,VAR c,d_state *d) {
+	return (d[r==c?N:c].ddr >> r) & 1;
+}
+DEF setLight(VAR r,VAR c,VAR v,d_state *d) {
+	if (getLight(r,c,d)!=v) flipLight(r,c,d);
+}
+
+/*
+DEF flipOldLife(VAR r, VAR c) {
+	life[r][c] ^= 2>>liFlag;
+}
+VAR getOldLife(VAR r, VAR c) {
+	return (life[r][c]>>(1^liFlag))&1;
+}
+DEF setOldLife(VAR r, VAR c, VAR v) {
+	if (getOldLife(r,c) != v) flipOldLife(r,c);
+}
+
+DEF flipNewLife(VAR r, VAR c) {
+	life[r][c] ^= 1<<liFlag;
+}
+VAR getNewLife(VAR r, VAR c) {
+	return (life[r][c]>>liFlag)&1;
+}
+DEF setNewLife(VAR r, VAR c, VAR v) {
+	if (getNewLife(r,c) != v) flipNewLife(r,c);
+}
+
+DEF updateLife() 
+{
+	VAR r,c;
+	VAR k=0;
+	VAR changed=0;
+	for (r=0; r<N; r++)
+		for (c=0; c<N; c++)
+		{
+			int i,j;
+			VAR s = life[r][c];
+			VAR n = 0;
+			for (i=-1; i<=1; i++)
+				for (j=-1; j<=1; j++)
+					if (i||j)
+					{
+						VAR x=(c+j+N)%N;
+						VAR y=(r+i+N)%N;
+						n += getOldLife(y,x);
+					}
+			n = getOldLife(r,c)? (n>>1)==1:(n==3);
+			changed |= !((s&3)+n & 3);
+			k += n;
+			//setNewLife(r,c,n);
+			//setLight(r,c,getOldLife(r,c),buffState);
+		}
+	//liFlag^=1;
+	//flipDisplay();
+	delay(100);
+}
+*/
+
+int main()
+{	
+	VAR i,r,c;
+	
+	for (i=0; i<=N; i++) dispState[i].ddr = 0xfff;//1<<i;
+	//for (i=0; i<20; i++) setLight(random()%N,random()%N,1,dispState);
+
+	/*
+	for (r=0; r<N; r++)
+		for (c=0; c<N; c++)
+			flipLight(r,c,dispState);
+	*/
+	/*
+	for (i=0; i<200; i++) {
+		VAR r = random()%N;
+		VAR c = random()%N;
+		flipOldLife(r,c);
+	}*/
+
+	TCCR0B |= 1<<CS00;
+	TIMSK0 |= 1<<TOIE0;
+	sei();
+	
+	while (1);// updateLife();
+} 
+
+
+

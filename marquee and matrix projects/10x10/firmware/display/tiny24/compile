@@ -1,0 +1,4 @@
+#./png2int.py
+#./st2chi.py
+avr-gcc -Os -mmcu=attiny24 ./display.c -o a.o && du -b ./a.bin &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin 

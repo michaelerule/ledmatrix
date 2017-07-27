@@ -1,0 +1,97 @@
+\hypertarget{SpectrumAudio_8h}{\section{\-Spectrum\-Audio.\-h \-File \-Reference}
+\label{SpectrumAudio_8h}\index{\-Spectrum\-Audio.\-h@{\-Spectrum\-Audio.\-h}}
+}
+
+
+\-Audio sampling driver for \-Open \-Spectrum \-Analyzer.  
+
+
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\*
+{\ttfamily \#include $<$\-Spectrum\-F\-H\-T.\-h$>$}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{SpectrumAudio_8h_a6671cfbc98f1f3374f3e6c9f63e13ae4}{\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R}~0b11001100
+\begin{DoxyCompactList}\small\item\em bits are \mbox{[}\-A\-D\-C?\mbox{]}\mbox{[}start conversion\mbox{]}\mbox{[}auto trigger?\mbox{]}\mbox{[}interrupt flag\mbox{]}\mbox{[}interrupt enable\mbox{]}\mbox{[}three prescaler bits\mbox{]} prescaler is 4. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{SpectrumAudio_8h_a72aef54bbf8430ce6d860206deb2d1ce}{init\-\_\-audio} ()
+\begin{DoxyCompactList}\small\item\em \-Initializes audio configuration. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumAudio_8h_a4ff48c11864f6a45d87a4619c31f14f2}{\hyperlink{SpectrumAudio_8h_a4ff48c11864f6a45d87a4619c31f14f2}{\-I\-S\-R} (\-A\-D\-C\-\_\-vect, \-I\-S\-R\-\_\-\-B\-L\-O\-C\-K)}\label{SpectrumAudio_8h_a4ff48c11864f6a45d87a4619c31f14f2}
+
+\begin{DoxyCompactList}\small\item\em \-Audio sampling interrupt handling routine. \end{DoxyCompactList}\item 
+int \hyperlink{SpectrumAudio_8h_a29caf60325f23c7113510e441a4bd319}{check\-\_\-audio} ()
+\begin{DoxyCompactList}\small\item\em \-Audio processing routine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumAudio_8h_a614cded99d3ce27a2e1419601457124e}{volatile uint8\-\_\-t \hyperlink{SpectrumAudio_8h_a614cded99d3ce27a2e1419601457124e}{current\-\_\-channel} = 0}\label{SpectrumAudio_8h_a614cded99d3ce27a2e1419601457124e}
+
+\begin{DoxyCompactList}\small\item\em \-Audio input line currently being sampled. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumAudio_8h_ab6404405767440fa4857bd36cca44243}{volatile uint16\-\_\-t \hyperlink{SpectrumAudio_8h_ab6404405767440fa4857bd36cca44243}{data\-\_\-index} = 0}\label{SpectrumAudio_8h_ab6404405767440fa4857bd36cca44243}
+
+\begin{DoxyCompactList}\small\item\em \-Current index for writing sampled audio into the buffer. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumAudio_8h_ab2ff11791d3074d8b58db11804992a81}{volatile uint8\-\_\-t \hyperlink{SpectrumAudio_8h_ab2ff11791d3074d8b58db11804992a81}{data\-\_\-handling} = 0}\label{SpectrumAudio_8h_ab2ff11791d3074d8b58db11804992a81}
+
+\begin{DoxyCompactList}\small\item\em \-Boolean flag\-: true when sampling is paused for processing. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumAudio_8h_ab1642576fd1f9c0ec5c7b7e0ce34f7e8}{int \hyperlink{SpectrumAudio_8h_ab1642576fd1f9c0ec5c7b7e0ce34f7e8}{analog\-Controls} \mbox{[}4\mbox{]}}\label{SpectrumAudio_8h_ab1642576fd1f9c0ec5c7b7e0ce34f7e8}
+
+\begin{DoxyCompactList}\small\item\em single scalar values read from analog inputs not used for audio ( controls ). \-Currently only 2 is in use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Audio sampling driver for \-Open \-Spectrum \-Analyzer. \begin{DoxyDate}{\-Date}
+\-August, 2013
+\end{DoxyDate}
+\begin{DoxyCopyright}{\-Copyright}
+\-Michael \-Rule (\href{mailto:mrule7404@gmail.com}{\tt mrule7404@gmail.\-com}) 2013 
+
+\-Joshua \-Holt (\href{mailto:jholt7532@gmail.com}{\tt jholt7532@gmail.\-com}) 2013
+\end{DoxyCopyright}
+\-This file is part of \-Open \-Spectrum \-Analyzer (\-Open\-S\-A).
+
+\-Open\-S\-A is free software\-: you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation, either version 3 of the \-License, or (at your option) any later version.
+
+\-Open\-S\-A is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details.
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with \-Open\-S\-A. \-If not, see $<$\href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}$>$.
+
+-\/-\/-\/-\/-\/
+
+\-Channel 0 is for left audio, channel 1 is for right audio. \-Channel 2 is hooked up to the potentiometer 
+
+\subsection{\-Define \-Documentation}
+\hypertarget{SpectrumAudio_8h_a6671cfbc98f1f3374f3e6c9f63e13ae4}{\index{\-Spectrum\-Audio.\-h@{\-Spectrum\-Audio.\-h}!\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R@{\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R}}
+\index{\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R@{\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R}!SpectrumAudio.h@{\-Spectrum\-Audio.\-h}}
+\subsubsection[{\-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-A\-D\-C\-M\-A\-G\-I\-C\-N\-U\-M\-B\-E\-R}~0b11001100}}\label{SpectrumAudio_8h_a6671cfbc98f1f3374f3e6c9f63e13ae4}
+
+
+bits are \mbox{[}\-A\-D\-C?\mbox{]}\mbox{[}start conversion\mbox{]}\mbox{[}auto trigger?\mbox{]}\mbox{[}interrupt flag\mbox{]}\mbox{[}interrupt enable\mbox{]}\mbox{[}three prescaler bits\mbox{]} prescaler is 4. 
+
+\-Prescalers of 0,1,2 don't work, 3 seems to cause some glitching of the display? 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{SpectrumAudio_8h_a29caf60325f23c7113510e441a4bd319}{\index{\-Spectrum\-Audio.\-h@{\-Spectrum\-Audio.\-h}!check\-\_\-audio@{check\-\_\-audio}}
+\index{check\-\_\-audio@{check\-\_\-audio}!SpectrumAudio.h@{\-Spectrum\-Audio.\-h}}
+\subsubsection[{check\-\_\-audio}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf check\-\_\-audio} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{SpectrumAudio_8h_a29caf60325f23c7113510e441a4bd319}
+
+
+\-Audio processing routine. 
+
+\-Performs \-F\-F\-T and stores the output for future use. \-Also switches channels. \hypertarget{SpectrumAudio_8h_a72aef54bbf8430ce6d860206deb2d1ce}{\index{\-Spectrum\-Audio.\-h@{\-Spectrum\-Audio.\-h}!init\-\_\-audio@{init\-\_\-audio}}
+\index{init\-\_\-audio@{init\-\_\-audio}!SpectrumAudio.h@{\-Spectrum\-Audio.\-h}}
+\subsubsection[{init\-\_\-audio}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf init\-\_\-audio} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{SpectrumAudio_8h_a72aef54bbf8430ce6d860206deb2d1ce}
+
+
+\-Initializes audio configuration. 
+
+\-This does not enable interrupts. init\-\_\-\-Open\-S\-A calles this initializer and then calls sei() after other initialization is done. \-If you wish to use this file in isolation, you should manually enable interrupts when you are ready for audio sampling to start. 

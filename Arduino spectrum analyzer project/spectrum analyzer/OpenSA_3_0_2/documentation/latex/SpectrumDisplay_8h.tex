@@ -1,0 +1,153 @@
+\hypertarget{SpectrumDisplay_8h}{\section{\-Spectrum\-Display.\-h \-File \-Reference}
+\label{SpectrumDisplay_8h}\index{\-Spectrum\-Display.\-h@{\-Spectrum\-Display.\-h}}
+}
+
+
+\-Display driver for \-Open \-Spectrum \-Analyzer (please see \hyperlink{SpectrumGraphics_8h}{\-Spectrum\-Graphics.\-h}).  
+
+
+{\ttfamily \#include $<$stdint.\-h$>$}\*
+{\ttfamily \#include $<$\-Arduino.\-h$>$}\*
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\#define \hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}~18}\label{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}
+
+\begin{DoxyCompactList}\small\item\em \-Number of columns in the display. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}{\#define \hyperlink{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}{\-N\-R\-O\-W\-S}~20}\label{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}
+
+\begin{DoxyCompactList}\small\item\em \-Number of rows in the display. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_aeb4f757edb19b99c81e1c10694aef434}{\#define \hyperlink{SpectrumDisplay_8h_aeb4f757edb19b99c81e1c10694aef434}{\-R\-E\-F\-R\-E\-S\-H\-I\-N\-T\-E\-R\-V\-A\-L}~196}\label{SpectrumDisplay_8h_aeb4f757edb19b99c81e1c10694aef434}
+
+\begin{DoxyCompactList}\small\item\em \-For compare-\/to-\/counter timer interrupt. \-Assigned to \-O\-C\-R0\-A. \-Display driver will trigger every \-R\-E\-F\-R\-E\-S\-H\-I\-N\-T\-E\-R\-V\-A\-L tics. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ad5635dcd7346c8b42ccb11522101bcb6}{\#define \hyperlink{SpectrumDisplay_8h_ad5635dcd7346c8b42ccb11522101bcb6}{\-L\-A\-T\-C\-H\-P\-I\-N}~2}\label{SpectrumDisplay_8h_ad5635dcd7346c8b42ccb11522101bcb6}
+
+\begin{DoxyCompactList}\small\item\em \-Pin connected to \-S\-T\-\_\-\-C\-P of 74\-H\-C595 ( in terms of \-Arduino mapping ) \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a3d469462e83f0b22e224e350112fcf3a}{\#define \hyperlink{SpectrumDisplay_8h_a3d469462e83f0b22e224e350112fcf3a}{\-C\-L\-O\-C\-K\-P\-I\-N}~3}\label{SpectrumDisplay_8h_a3d469462e83f0b22e224e350112fcf3a}
+
+\begin{DoxyCompactList}\small\item\em \-Pin connected to \-S\-H\-\_\-\-C\-P of 74\-H\-C595 ( in terms of \-Arduino mapping ) \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac4ed23ca1aed6935a61a44516e805bc5}{\#define \hyperlink{SpectrumDisplay_8h_ac4ed23ca1aed6935a61a44516e805bc5}{\-D\-A\-T\-A\-L\-I\-N\-E\-P\-O\-R\-T}~\-P\-O\-R\-T\-B}\label{SpectrumDisplay_8h_ac4ed23ca1aed6935a61a44516e805bc5}
+
+\begin{DoxyCompactList}\small\item\em \-Port used for the datalines. \-This port gets smashed, don't put anything else on it. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a266beded65a03f53e680cae85f6cdb66}{\#define \hyperlink{SpectrumDisplay_8h_a266beded65a03f53e680cae85f6cdb66}{\-C\-L\-O\-C\-K\-L\-I\-N\-E\-P\-O\-R\-T}~\-P\-O\-R\-T\-D}\label{SpectrumDisplay_8h_a266beded65a03f53e680cae85f6cdb66}
+
+\begin{DoxyCompactList}\small\item\em \-Port used for the clock lines. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a79fd3c2925a9d6aa6b509800527a10c8}{\#define \hyperlink{SpectrumDisplay_8h_a79fd3c2925a9d6aa6b509800527a10c8}{\-L\-A\-T\-C\-H\-M\-A\-S\-K}~\-\_\-\-B\-V(2)}\label{SpectrumDisplay_8h_a79fd3c2925a9d6aa6b509800527a10c8}
+
+\begin{DoxyCompactList}\small\item\em \-Bit mask for the latch clock line. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a8257f7e0fc0988d57d02cae012d2cc83}{\#define \hyperlink{SpectrumDisplay_8h_a8257f7e0fc0988d57d02cae012d2cc83}{\-C\-L\-O\-C\-K\-M\-A\-S\-K}~\-\_\-\-B\-V(3)}\label{SpectrumDisplay_8h_a8257f7e0fc0988d57d02cae012d2cc83}
+
+\begin{DoxyCompactList}\small\item\em \-Bit mask for the data clock line. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a25403eb84b26377f759066af5fdba4c5}{\#define \hyperlink{SpectrumDisplay_8h_a25403eb84b26377f759066af5fdba4c5}{\-N\-P\-I\-N\-S\-P\-E\-R\-R\-E\-G\-I\-S\-T\-E\-R}~8}\label{SpectrumDisplay_8h_a25403eb84b26377f759066af5fdba4c5}
+
+\begin{DoxyCompactList}\small\item\em number of parallel outputs per shift register \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a6941e5c4346941b7cd34081c7c660376}{\#define \hyperlink{SpectrumDisplay_8h_a6941e5c4346941b7cd34081c7c660376}{\-N\-D\-A\-T\-A\-L\-I\-N\-E\-S}~6}\label{SpectrumDisplay_8h_a6941e5c4346941b7cd34081c7c660376}
+
+\begin{DoxyCompactList}\small\item\em number of data lines ( shift registers ) \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a0d1ef5997906ac78b3516a9a819d2ec0}{\#define \hyperlink{SpectrumDisplay_8h_a0d1ef5997906ac78b3516a9a819d2ec0}{\-P\-O\-R\-T\-C\-O\-L\-B\-I\-T\-S\-S\-T\-A\-R\-T}~0}\label{SpectrumDisplay_8h_a0d1ef5997906ac78b3516a9a819d2ec0}
+
+\begin{DoxyCompactList}\small\item\em starting index of registers used for column data \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac3694d3c6b5ec464cf9a9ab970dcb6f6}{\#define \hyperlink{SpectrumDisplay_8h_ac3694d3c6b5ec464cf9a9ab970dcb6f6}{\-P\-O\-R\-T\-R\-O\-W\-B\-I\-T\-S\-S\-T\-A\-R\-T}~3}\label{SpectrumDisplay_8h_ac3694d3c6b5ec464cf9a9ab970dcb6f6}
+
+\begin{DoxyCompactList}\small\item\em starting index of registers used for column scanning \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a23bbdcaa9651788695b3ac6554f1c3af}{\#define \hyperlink{SpectrumDisplay_8h_a23bbdcaa9651788695b3ac6554f1c3af}{\-N\-C\-O\-L\-R\-E\-G\-I\-S\-T\-E\-R\-S}~3}\label{SpectrumDisplay_8h_a23bbdcaa9651788695b3ac6554f1c3af}
+
+\begin{DoxyCompactList}\small\item\em number of registers used for column data \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_aabc9a481c4343f3d15542d6d7b46e2cf}{\#define \hyperlink{SpectrumDisplay_8h_aabc9a481c4343f3d15542d6d7b46e2cf}{\-B\-I\-T\-D\-E\-P\-T\-H}~3}\label{SpectrumDisplay_8h_aabc9a481c4343f3d15542d6d7b46e2cf}
+
+\begin{DoxyCompactList}\small\item\em greyscale bit depth of internal display memory \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a0487542dffb3cfb21f4504552bbfedf9}{\#define \hyperlink{SpectrumDisplay_8h_a0487542dffb3cfb21f4504552bbfedf9}{\-N\-F\-R\-A\-M\-E\-S}~\hyperlink{SpectrumDisplay_8h_aabc9a481c4343f3d15542d6d7b46e2cf}{\-B\-I\-T\-D\-E\-P\-T\-H}}\label{SpectrumDisplay_8h_a0487542dffb3cfb21f4504552bbfedf9}
+
+\begin{DoxyCompactList}\small\item\em an alias for bit depth, related to how \-P\-W\-M is achieved \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a6b28182b6700f4427e3de5dbfd1d9e90}{\#define \hyperlink{SpectrumDisplay_8h_a6b28182b6700f4427e3de5dbfd1d9e90}{\-P\-O\-R\-T\-C\-O\-L\-U\-M\-N\-M\-A\-S\-K}~0b00000111}\label{SpectrumDisplay_8h_a6b28182b6700f4427e3de5dbfd1d9e90}
+
+\begin{DoxyCompactList}\small\item\em a mask for the data lines of registers related to column data \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a3dd513347741b991667651aea178a474}{\#define \hyperlink{SpectrumDisplay_8h_a3dd513347741b991667651aea178a474}{\-P\-O\-R\-T\-R\-O\-W\-M\-A\-S\-K}~0b00111000}\label{SpectrumDisplay_8h_a3dd513347741b991667651aea178a474}
+
+\begin{DoxyCompactList}\small\item\em a mask for the data lines of registers related to column scanning \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{\#define \hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type}~uint8\-\_\-t}\label{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}
+
+\begin{DoxyCompactList}\small\item\em data type used to store display data \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_adf0b07ad6dac2f9a1a6169d95a67354e}{\#define \hyperlink{SpectrumDisplay_8h_adf0b07ad6dac2f9a1a6169d95a67354e}{\-B\-Y\-T\-E\-S\-P\-E\-R\-C\-O\-L\-U\-M\-N}~8}\label{SpectrumDisplay_8h_adf0b07ad6dac2f9a1a6169d95a67354e}
+
+\begin{DoxyCompactList}\small\item\em number of display\-\_\-buffer\-\_\-type needed to store column data \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a700445b459f199a930f594fe74064e3c}{\#define \hyperlink{SpectrumDisplay_8h_a700445b459f199a930f594fe74064e3c}{\-B\-Y\-T\-E\-S\-P\-E\-R\-F\-R\-A\-M\-E}~(\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}$\ast$\hyperlink{SpectrumDisplay_8h_adf0b07ad6dac2f9a1a6169d95a67354e}{\-B\-Y\-T\-E\-S\-P\-E\-R\-C\-O\-L\-U\-M\-N})}\label{SpectrumDisplay_8h_a700445b459f199a930f594fe74064e3c}
+
+\begin{DoxyCompactList}\small\item\em number of display\-\_\-buffer\-\_\-type needed to store one frame \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a85ef2100cc6e3f5da96bee94a84808b5}{\#define \hyperlink{SpectrumDisplay_8h_a85ef2100cc6e3f5da96bee94a84808b5}{\-D\-I\-S\-P\-L\-A\-Y\-B\-U\-F\-F\-E\-R\-L\-E\-N}~(\hyperlink{SpectrumDisplay_8h_a700445b459f199a930f594fe74064e3c}{\-B\-Y\-T\-E\-S\-P\-E\-R\-F\-R\-A\-M\-E}$\ast$\hyperlink{SpectrumDisplay_8h_aabc9a481c4343f3d15542d6d7b46e2cf}{\-B\-I\-T\-D\-E\-P\-T\-H})}\label{SpectrumDisplay_8h_a85ef2100cc6e3f5da96bee94a84808b5}
+
+\begin{DoxyCompactList}\small\item\em number of display\-\_\-buffer\-\_\-type needed for display memory \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a55da4aff503a2392e2c29d644b316b1d}{\#define \hyperlink{SpectrumDisplay_8h_a55da4aff503a2392e2c29d644b316b1d}{\-C\-L\-O\-C\-K\-T\-I\-C\-K}~\{ \-P\-O\-R\-T\-D = 0; \-P\-O\-R\-T\-D = \hyperlink{SpectrumDisplay_8h_a8257f7e0fc0988d57d02cae012d2cc83}{\-C\-L\-O\-C\-K\-M\-A\-S\-K}; \}}\label{SpectrumDisplay_8h_a55da4aff503a2392e2c29d644b316b1d}
+
+\begin{DoxyCompactList}\small\item\em shortcut for triggering data clock \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac452ec83d8d4e21ecfca5d9df71e62fd}{\#define \hyperlink{SpectrumDisplay_8h_ac452ec83d8d4e21ecfca5d9df71e62fd}{\-L\-A\-T\-C\-H\-T\-I\-C\-K}~\{ \-P\-O\-R\-T\-D = 0; \-P\-O\-R\-T\-D = \hyperlink{SpectrumDisplay_8h_a79fd3c2925a9d6aa6b509800527a10c8}{\-L\-A\-T\-C\-H\-M\-A\-S\-K}; \}}\label{SpectrumDisplay_8h_ac452ec83d8d4e21ecfca5d9df71e62fd}
+
+\begin{DoxyCompactList}\small\item\em shortcut for triggering data latch \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumDisplay_8h_a5684e7576dcad5908944beef595160c4}{\hyperlink{SpectrumDisplay_8h_a5684e7576dcad5908944beef595160c4}{\-I\-S\-R} (\-T\-I\-M\-E\-R0\-\_\-\-C\-O\-M\-P\-A\-\_\-vect, \-I\-S\-R\-\_\-\-N\-O\-B\-L\-O\-C\-K)}\label{SpectrumDisplay_8h_a5684e7576dcad5908944beef595160c4}
+
+\begin{DoxyCompactList}\small\item\em \-Display timer interrupt handler. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a189114bd9311d18826fe82e593fbac51}{void \hyperlink{SpectrumDisplay_8h_a189114bd9311d18826fe82e593fbac51}{blank\-Display} ()}\label{SpectrumDisplay_8h_a189114bd9311d18826fe82e593fbac51}
+
+\begin{DoxyCompactList}\small\item\em \-Wipes the shift registers for a blank display. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ad555b3962c893087ae15d83917382b46}{void \hyperlink{SpectrumDisplay_8h_ad555b3962c893087ae15d83917382b46}{initialize\-Display\-Buffer} (\hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$buffer)}\label{SpectrumDisplay_8h_ad555b3962c893087ae15d83917382b46}
+
+\begin{DoxyCompactList}\small\item\em \-Configures display memory. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac035a32723c22acfd326bd119dc02bce}{void \hyperlink{SpectrumDisplay_8h_ac035a32723c22acfd326bd119dc02bce}{set\-Buffer\-Pixel} (uint8\-\_\-t r, uint8\-\_\-t c, uint8\-\_\-t v, \hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$buffer)}\label{SpectrumDisplay_8h_ac035a32723c22acfd326bd119dc02bce}
+
+\begin{DoxyCompactList}\small\item\em \-Sets pixel data for display or drawing buffer. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a6f6a80c54e09b364b7f6e202aaf71cf4}{uint8\-\_\-t \hyperlink{SpectrumDisplay_8h_a6f6a80c54e09b364b7f6e202aaf71cf4}{get\-Buffer\-Pixel} (uint8\-\_\-t r, uint8\-\_\-t c, \hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$buffer)}\label{SpectrumDisplay_8h_a6f6a80c54e09b364b7f6e202aaf71cf4}
+
+\begin{DoxyCompactList}\small\item\em \-Retrieves pixel data from display or drawing buffer. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac079cd712ceeaf40cc0733b0f3a5d860}{void \hyperlink{SpectrumDisplay_8h_ac079cd712ceeaf40cc0733b0f3a5d860}{init\-\_\-display} ()}\label{SpectrumDisplay_8h_ac079cd712ceeaf40cc0733b0f3a5d860}
+
+\begin{DoxyCompactList}\small\item\em \-Initial display configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumDisplay_8h_a80273717693d5faa581964dd6dfac5c8}{const uint8\-\_\-t \hyperlink{SpectrumDisplay_8h_a80273717693d5faa581964dd6dfac5c8}{data\-Lines} \mbox{[}\hyperlink{SpectrumDisplay_8h_a6941e5c4346941b7cd34081c7c660376}{\-N\-D\-A\-T\-A\-L\-I\-N\-E\-S}\mbox{]} = \{8,9,10,11,12,13\}}\label{SpectrumDisplay_8h_a80273717693d5faa581964dd6dfac5c8}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a642cc3a023b1261d78b221aa14fb9fd4}{\hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} \hyperlink{SpectrumDisplay_8h_a642cc3a023b1261d78b221aa14fb9fd4}{display\-Memory} \mbox{[}2 $\ast$\hyperlink{SpectrumDisplay_8h_a85ef2100cc6e3f5da96bee94a84808b5}{\-D\-I\-S\-P\-L\-A\-Y\-B\-U\-F\-F\-E\-R\-L\-E\-N}\mbox{]}}\label{SpectrumDisplay_8h_a642cc3a023b1261d78b221aa14fb9fd4}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. display memory allocation \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a978437bfd9cdc7e0665a892acec3e6e9}{\hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$ \hyperlink{SpectrumDisplay_8h_a978437bfd9cdc7e0665a892acec3e6e9}{drawing\-\_\-buffer} = \&\hyperlink{SpectrumDisplay_8h_a642cc3a023b1261d78b221aa14fb9fd4}{display\-Memory}\mbox{[}0\mbox{]}}\label{SpectrumDisplay_8h_a978437bfd9cdc7e0665a892acec3e6e9}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. drawing buffer \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ab6e1f0502b84a40e66768b2896691390}{\hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$ \hyperlink{SpectrumDisplay_8h_ab6e1f0502b84a40e66768b2896691390}{display\-\_\-buffer} = \&\hyperlink{SpectrumDisplay_8h_a642cc3a023b1261d78b221aa14fb9fd4}{display\-Memory}\mbox{[}\hyperlink{SpectrumDisplay_8h_a85ef2100cc6e3f5da96bee94a84808b5}{\-D\-I\-S\-P\-L\-A\-Y\-B\-U\-F\-F\-E\-R\-L\-E\-N}\mbox{]}}\label{SpectrumDisplay_8h_ab6e1f0502b84a40e66768b2896691390}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. displayed buffer \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ac935c125763965fcb097d59b74ced803}{volatile int \hyperlink{SpectrumDisplay_8h_ac935c125763965fcb097d59b74ced803}{current\-\_\-frame} = 0}\label{SpectrumDisplay_8h_ac935c125763965fcb097d59b74ced803}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. tracks the current frame for \-P\-W\-M \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ae297370d6f2f781ebcad9cee7cb552d6}{volatile int \hyperlink{SpectrumDisplay_8h_ae297370d6f2f781ebcad9cee7cb552d6}{current\-\_\-column} = 0}\label{SpectrumDisplay_8h_ae297370d6f2f781ebcad9cee7cb552d6}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. tracks current column \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_a52ac31b48b2aa3c07e76351794061366}{volatile int \hyperlink{SpectrumDisplay_8h_a52ac31b48b2aa3c07e76351794061366}{current\-\_\-frame\-\_\-counter} = 0}\label{SpectrumDisplay_8h_a52ac31b48b2aa3c07e76351794061366}
+
+\begin{DoxyCompactList}\small\item\em internal display handling only. tracks overscan of current frame for \-P\-W\-M \end{DoxyCompactList}\item 
+\hypertarget{SpectrumDisplay_8h_ada2a3283841e4e5ee164cd6c2f8a3777}{void($\ast$ \hyperlink{SpectrumDisplay_8h_ada2a3283841e4e5ee164cd6c2f8a3777}{display\-\_\-callback} )()=0}\label{SpectrumDisplay_8h_ada2a3283841e4e5ee164cd6c2f8a3777}
+
+\begin{DoxyCompactList}\small\item\em register a callback function that can be polled in time with the display \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Display driver for \-Open \-Spectrum \-Analyzer (please see \hyperlink{SpectrumGraphics_8h}{\-Spectrum\-Graphics.\-h}). \begin{DoxyDate}{\-Date}
+\-August, 2013
+\end{DoxyDate}
+\begin{DoxyCopyright}{\-Copyright}
+\-Michael \-Rule (\href{mailto:mrule7404@gmail.com}{\tt mrule7404@gmail.\-com}) 2013 
+
+\-Joshua \-Holt (\href{mailto:jholt7532@gmail.com}{\tt jholt7532@gmail.\-com}) 2013
+\end{DoxyCopyright}
+\-This file is part of \-Open \-Spectrum \-Analyzer (\-Open\-S\-A).
+
+\-Open\-S\-A is free software\-: you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation, either version 3 of the \-License, or (at your option) any later version.
+
+\-Open\-S\-A is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details.
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with \-Open\-S\-A. \-If not, see $<$\href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}$>$. 

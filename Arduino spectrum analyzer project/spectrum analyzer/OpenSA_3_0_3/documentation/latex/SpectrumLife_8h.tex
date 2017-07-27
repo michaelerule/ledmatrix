@@ -1,0 +1,90 @@
+\hypertarget{SpectrumLife_8h}{\section{\-Spectrum\-Life.\-h \-File \-Reference}
+\label{SpectrumLife_8h}\index{\-Spectrum\-Life.\-h@{\-Spectrum\-Life.\-h}}
+}
+
+
+\-Game of life mode for \-Open\-S\-A.  
+
+
+{\ttfamily \#include \char`\"{}\-Spectrum\-Display.\-h\char`\"{}}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumLife_8h_a49b4801ec4ecca0932baadffe07d994b}{\#define {\bfseries buff}~\hyperlink{SpectrumDisplay_8h_a978437bfd9cdc7e0665a892acec3e6e9}{drawing\-\_\-buffer}}\label{SpectrumLife_8h_a49b4801ec4ecca0932baadffe07d994b}
+
+\item 
+\hypertarget{SpectrumLife_8h_ac6dcdd5afc4cc0975f15881e58bd191b}{\#define {\bfseries disp}~\hyperlink{SpectrumDisplay_8h_ab6e1f0502b84a40e66768b2896691390}{display\-\_\-buffer}}\label{SpectrumLife_8h_ac6dcdd5afc4cc0975f15881e58bd191b}
+
+\item 
+\hypertarget{SpectrumLife_8h_aba81c96cb8bbb8e1c5f79a52ee0eccc0}{\#define {\bfseries get}(buffer, r, c)~(\hyperlink{SpectrumDisplay_8h_a6f6a80c54e09b364b7f6e202aaf71cf4}{get\-Buffer\-Pixel}((r),(c),(buffer))==\hyperlink{SpectrumGraphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}{\-W\-H\-I\-T\-E}?1\-:0)}\label{SpectrumLife_8h_aba81c96cb8bbb8e1c5f79a52ee0eccc0}
+
+\item 
+\hypertarget{SpectrumLife_8h_ac988164980c994fe164dadc500a9a380}{\#define {\bfseries prev\-Row}(x)~(x? (x$<$\hyperlink{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}{\-N\-R\-O\-W\-S}? x-\/1\-:0) \-: \hyperlink{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}{\-N\-R\-O\-W\-S}-\/1)}\label{SpectrumLife_8h_ac988164980c994fe164dadc500a9a380}
+
+\item 
+\hypertarget{SpectrumLife_8h_a4beccdb6c15c36e6ce9168eb1e00a511}{\#define {\bfseries next\-Row}(x)~(x $<$(\hyperlink{SpectrumDisplay_8h_ad1b201a53819ee0b206811f261d9dfce}{\-N\-R\-O\-W\-S}-\/1) ? x+1\-:0)}\label{SpectrumLife_8h_a4beccdb6c15c36e6ce9168eb1e00a511}
+
+\item 
+\hypertarget{SpectrumLife_8h_a842e213692df8f68f948357d19f0d704}{\#define {\bfseries prev\-Col}(x)~(x? (x$<$\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}? x-\/1\-:0) \-: \hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}-\/1)}\label{SpectrumLife_8h_a842e213692df8f68f948357d19f0d704}
+
+\item 
+\hypertarget{SpectrumLife_8h_a0d6c6f5392c501678c44185984afd883}{\#define {\bfseries next\-Col}(x)~(x $<$(\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}-\/1) ? x+1\-:0)}\label{SpectrumLife_8h_a0d6c6f5392c501678c44185984afd883}
+
+\item 
+\hypertarget{SpectrumLife_8h_a0c56d89bdf0a0ea73e9b62471d21c4fa}{\#define {\bfseries glider}~0x\-C\-E}\label{SpectrumLife_8h_a0c56d89bdf0a0ea73e9b62471d21c4fa}
+
+\item 
+\hypertarget{SpectrumLife_8h_a761bd32cbd98eb9403801ce64d46ee64}{\#define {\bfseries genesis}~0x5\-E}\label{SpectrumLife_8h_a761bd32cbd98eb9403801ce64d46ee64}
+
+\item 
+\hypertarget{SpectrumLife_8h_a1dc48c26c23775f698fa88d218f08747}{\#define {\bfseries bomb}~0x5\-D}\label{SpectrumLife_8h_a1dc48c26c23775f698fa88d218f08747}
+
+\item 
+\hypertarget{SpectrumLife_8h_a45ba202b05caf39795aeca91b0ae547e}{\#define {\bfseries \-T\-I\-M\-E\-O\-U\-T}~7}\label{SpectrumLife_8h_a45ba202b05caf39795aeca91b0ae547e}
+
+\item 
+\hypertarget{SpectrumLife_8h_a3d3c4a8cc347b2b42175e4daf4c3e17f}{\#define {\bfseries column\-Count}(r, c)~(get(disp,prev\-Row(r),c) + get(disp,r,c) + get(disp,next\-Row(r),c))}\label{SpectrumLife_8h_a3d3c4a8cc347b2b42175e4daf4c3e17f}
+
+\item 
+\hypertarget{SpectrumLife_8h_ad80d448d855f98be4974ccac2b75aaf0}{\#define {\bfseries entropy}()~((uint8\-\_\-t)((rngstate $^\wedge$= rngstate$>$$>$2$^\wedge$rngstate$<$$<$1)\&0xff))}\label{SpectrumLife_8h_ad80d448d855f98be4974ccac2b75aaf0}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumLife_8h_acb7500347f28ab123bd3d105174f4d3c}{void {\bfseries set} (\hyperlink{SpectrumDisplay_8h_ab3d6152ad6b916a862075909e3ecb85f}{display\-\_\-buffer\-\_\-type} $\ast$buffer, uint8\-\_\-t r, uint8\-\_\-t c, uint8\-\_\-t value)}\label{SpectrumLife_8h_acb7500347f28ab123bd3d105174f4d3c}
+
+\item 
+\hypertarget{SpectrumLife_8h_a1e2e5276155694c0b8aeef086ed32ebe}{void {\bfseries init\-\_\-life} ()}\label{SpectrumLife_8h_a1e2e5276155694c0b8aeef086ed32ebe}
+
+\item 
+\hypertarget{SpectrumLife_8h_a950bd59dab30fda29413f049f20f2d4d}{void {\bfseries life} ()}\label{SpectrumLife_8h_a950bd59dab30fda29413f049f20f2d4d}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{SpectrumLife_8h_a71c2deae53ffa75bdf134614215d2575}{uint8\-\_\-t {\bfseries shown\-For}}\label{SpectrumLife_8h_a71c2deae53ffa75bdf134614215d2575}
+
+\item 
+\hypertarget{SpectrumLife_8h_ac1fdf6d42c8d05c11ba23b4f4b89ec10}{uint16\-\_\-t {\bfseries rngstate} = 104729}\label{SpectrumLife_8h_ac1fdf6d42c8d05c11ba23b4f4b89ec10}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Game of life mode for \-Open\-S\-A. \begin{DoxyDate}{\-Date}
+\-August, 2013
+\end{DoxyDate}
+\begin{DoxyCopyright}{\-Copyright}
+\-Michael \-Rule (\href{mailto:mrule7404@gmail.com}{\tt mrule7404@gmail.\-com}) 2013 
+
+\-Joshua \-Holt (\href{mailto:jholt7532@gmail.com}{\tt jholt7532@gmail.\-com}) 2013
+\end{DoxyCopyright}
+\-This file is part of \-Open \-Spectrum \-Analyzer (\-Open\-S\-A).
+
+\-Open\-S\-A is free software\-: you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation, either version 3 of the \-License, or (at your option) any later version.
+
+\-Open\-S\-A is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details.
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with \-Open\-S\-A. \-If not, see $<$\href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}$>$. 

@@ -1,0 +1,7 @@
+#./png2int.py
+#./st2chi.py
+avr-gcc -Os -mmcu=atmega328 ./display_rowscann_working.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -c avrispmkII -p m328p -B1 -P /dev/ttyUSB0 -F -U flash:w:a.bin
+avrdude -c avrispmkII -p m328p -B100 -P /dev/ttyUSB0 -U lfuse:w:0xE2:m -F
+

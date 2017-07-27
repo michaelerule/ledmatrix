@@ -1,0 +1,34 @@
+Partlist
+
+Exported from bar.brd at 10/6/10 4:07 PM
+
+EAGLE Version 5.10.0 Copyright (c) 1988-2010 CadSoft
+
+Part     Value          Package   Library  Position (inch)       Orientation
+
+C1       10 uF          0805      SparkFun (3.7 0.385)           MR270
+C2       100 nf         0805      SparkFun (1.9 0.71)            MR270
+D1                      SMA-DIODE SparkFun (2.435 0.85)          R180
+IC1      TINY13V-10SSU  8S1       atmel    (1.34 0.8)            MR270
+JP1                     1X06      SparkFun (0.1 0.35)            R90
+JP2                     1X06      SparkFun (3.564 0.35)          R90
+LED1                    LED5MM    SparkFun (0.1 0.15)            MR90
+LED2                    LED5MM    SparkFun (0.35 0.15)           MR90
+LED3                    LED5MM    SparkFun (0.6 0.15)            MR90
+LED4                    LED5MM    SparkFun (0.85 0.15)           MR90
+LED5                    LED5MM    SparkFun (1.1 0.15)            MR90
+LED6                    LED5MM    SparkFun (1.35 0.15)           MR90
+LED7                    LED5MM    SparkFun (1.6 0.15)            MR90
+LED8                    LED5MM    SparkFun (1.85 0.15)           MR90
+LED9                    LED5MM    SparkFun (2.1 0.15)            MR90
+LED10                   LED5MM    SparkFun (2.35 0.15)           MR90
+LED11                   LED5MM    SparkFun (2.6 0.15)            MR90
+LED12                   LED5MM    SparkFun (2.85 0.15)           MR90
+LED13                   LED5MM    SparkFun (3.1 0.15)            MR90
+LED14                   LED5MM    SparkFun (3.35 0.15)           MR90
+LED15                   LED5MM    SparkFun (3.6 0.15)            MR90
+LED16                   LED5MM    SparkFun (3.85 0.15)           MR90
+R1       1k             0603-RES  SparkFun (1.93 0.825)          MR180
+R2       1k             0603-RES  SparkFun (1.34 0.935)          MR0
+TP1      TPTP20SQ       TP20SQ    testpad  (1.545 0.875)         MR0
+U$1      STP16CP05SO-24 SO-24W    SparkFun (1.975 0.6)           R270

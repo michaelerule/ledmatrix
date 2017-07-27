@@ -1,0 +1,171 @@
+#!/usr/bin/env python
+'''
+in retrospect it would have been better to look for a DOI and then grab the citation XML format from PubMed
+'''
+
+# USED TO DOWNLOAD WEBSITES
+import urllib2 
+# USED TO PARSE HTML DATA
+import BeautifulSoup
+from BeautifulSoup import BeautifulStoneSoup
+
+outfilename = 'papers'
+
+outfile = open(outfilename,'w')
+def output(s):
+    try:
+	    print s
+	    outfile.write(s+'\n')
+    except:
+        pass
+        #print "WAT?"
+    
+# For the URL library, 
+# create a custom user agent string to conform to reddit API TOS
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 'headline_scraper michaelerule')]
+urlopen = opener.open
+
+def strip(s):
+    s = ' '.join(s.split())
+    s = "'".join(s.split('&apos;'))
+    return s
+
+getitems = lambda s: s.findAll('item')+s.findAll('entry')
+gettitle = lambda i: strip((i.findAll('title')+i.findAll('dc:title'))[0].contents[0])
+
+def getauthors(i):
+    '''
+    inconsistent conventions make this adventureous
+    '''
+    authors = i.findAll('dc:creator')+i.findAll('author')
+    if not len(authors): # god damnit jneurosci why u make me do this
+        authors = i.findAll('description')
+    authors = [strip((a.find('name') if a.find('name') else a).contents[0]) for a in authors]
+    return authors
+
+def ismultiauthor(author):
+    # could just be a one author paper
+    # multiauthor lists have a bunch of punctuation
+    # Last, A.B.
+    # Last, First
+    # Last, First.
+    # Last, AB.
+    # Last, A.B
+    # First Last, First Last
+    # First Last, First Last.
+    # A.B. First
+    multiauthor = False
+    multiauthor |= ' and ' in author
+    multiauthor |= author.count('.')>2
+    multiauthor |= author.count(',')>1
+    multiauthor |= len(author.split())>3
+    multiauthor &= not ' et al' in author.lower()
+    return multiauthor
+    
+def separatemultiauthor(author):
+    # probably a combined author list
+    # try to separate it out
+    if ' and ' in author:
+        authors = author.split(' and ')[:2]
+        if ismultiauthor(authors[0]):
+            return separatemultiauthor(authors[0])+[authors[1]]
+        return authors
+    a = author.replace('.',' ').replace(',',' ').split()
+    if len([x for x in a if len(x)==1])>=len(a)/2:
+        #lots of single characters, assuming .. yeah
+        b = []
+        y = ''
+        flip = False
+        for x in a:
+            if len(x)==1 or not flip:
+                y = y+' '+x if y else x
+                if len(x)==1:
+                    flip = True
+            elif y:
+                b.append(y)
+                y = x
+                flip = False
+        if y:
+            b.append(y)
+        return b
+    a = map(strip,author.split(','))
+    a = [x for x in a if not ismultiauthor(x)]
+    if len(a):
+        if len(a[-1].split())>3:
+            try:
+                b = a[-1].split('.')
+                if len(b[1].split())<2:
+                    b = ['.'.join(b[:2])]
+                a[-1] = b[0]
+            except:
+                pass
+    return a
+
+def printauthors(authors):
+    if not authors or not len(authors):
+        return
+    '''
+    Author lists are variable.
+    Sometimes each author is in its own line ( good )
+    ( Though MIT appends some email metadata to each author which one
+    would want to strip )
+    Sometimes they are all together in one line
+    They can be comma delimited
+    But also be written as last, first, last, first so commas don't help
+    And sometimes after the author list they trail off into a description
+    And sometimes the last author is listed with "and" preceeding
+    Sometimes with and sometimes without the oxford comma
+    So to extract individual authors, we have to be clever
+    '''
+    
+    if len(authors)==1:
+        author = authors[0]
+        if ismultiauthor(author):
+            authors = separatemultiauthor(author)
+    
+    # hack for MIT press to remove emails
+    authors = [ strip(a.split('(')[1][:-1]) if '@' in a else a for a in authors]
+    first = authors[0] if len(authors) else ''
+    first = strip(first)
+    first = first.replace(',',' ').replace('.',' ')    
+    first = first.replace('et al.','').replace('et al','')    
+    first = strip(first)
+    first = first.split()
+    first = ' '.join([f for f in first if len(f)>1])
+    first = first.split()
+    if len(first):
+        first = first[-1]
+        if len(first):
+            return strip(first)
+    return ''
+
+sites = [
+'http://www.nature.com/neuro/current_issue/rss/',
+#'http://feeds.aps.org/rss/tocsec/PRE-Statisticalphysics.xml',
+#'http://compbiol.plosjournals.org/perlserv/?request=get-rss',
+'http://www.jneuroengrehab.com/rss/',
+'http://www.jneurosci.org/rss/current.xml',
+'http://www.mitpressjournals.org/action/showFeed?ui=0&mi=3b6e56&ai=sl&jc=neco&type=etoc&feed=rss',
+#'http://www.cell.com/rssFeed/neuron/rss.NewIssueAndArticles.xml',
+'http://jn.physiology.org/rss/current.xml']
+
+def padd(s):
+    return s + ''.join([' '*max(0,25-len(s))])
+
+for site in sites:
+    #print '==========================='
+    #print site
+    #print '==========================='
+    s = BeautifulStoneSoup(urlopen(site).read())
+    for i in getitems(s):
+        title = gettitle(i)
+        if not any([x in title.lower() for x in 'contents table correction corrigendum retraction journal week review views news reply'.split()]):
+            first = printauthors(getauthors(i))
+            if first:
+                output(first+': '+title)#+' (%s) '%first)
+                #output(first+': '+title)#+' (%s) '%first)
+
+
+
+

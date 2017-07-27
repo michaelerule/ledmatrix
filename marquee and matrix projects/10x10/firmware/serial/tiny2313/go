@@ -1,0 +1,3 @@
+avr-gcc -Os -mmcu=attiny2313 ./blit_greyscale.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -F -c avrispmkII -p t2313 -B1 -P /dev/ttyUSB2 -U flash:w:a.bin

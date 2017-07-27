@@ -1,0 +1,4 @@
+avrdude -c avrispmkII -p m328p -P /dev/ttys000 && \
+avr-gcc -mmcu=atmega328 ./display.c -o a.o && \
+avr-objcopy -j .text -j .data -O binary a.o a.bin && \
+avrdude -c avrispmkII -p m328p -P /dev/ttys000 -U flash:w:a.bin

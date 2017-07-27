@@ -1,0 +1,42 @@
+[Eagle]
+Version="06 04 00"
+Platform="Windows"
+Serial="62191E841E-LSR-WLM-1EL"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/111Discreter.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/111IC.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/11AAA.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/Connector.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/Logo.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/Module.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/Power or GND .lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/SparkFun-Capacitors.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/SparkFun-Connectors.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/lbr/SparkFun-DigitalIC.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-6.1.0/lbr/rcl.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/Prive01.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/adafruit.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/atmel (2).lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/holtek.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/private99.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE-5.11.0/lbr/sil-prive.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/avr-5-4.16.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/led.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/mrule2.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/pinhead.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/rcl.lbr"
+UsedLibrary="C:/Users/Jacques/Dropbox/Eagle/projects/Tiny24-5x18/SparkFun.lbr"
+
+[Win_1]
+Type="Control Panel"
+Loc="1320 0 1919 399"
+State=1
+Number=0
+
+[Desktop]
+Screen="3200 1080"
+Window="Win_1"

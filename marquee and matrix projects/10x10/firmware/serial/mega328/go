@@ -1,0 +1,6 @@
+./pack_video_compressed_2bit.py >video.h 
+avr-gcc -Os -mmcu=atmega328 ./playback_greyscale_2bit_compressed.c -o a.o
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin
+avrdude -c avrispmkII -p m328p -B1 -P /dev/ttyUSB0 -F -U flash:w:a.bin
+#avrdude -c avrispmkII -p m328p -B100 -P /dev/ttyUSB0 -U lfuse:w:0xE2:m -F
+

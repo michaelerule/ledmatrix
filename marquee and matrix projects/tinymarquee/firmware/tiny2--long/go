@@ -1,0 +1,15 @@
+#./png2int.py
+#./st2chi.py
+# avrdude -c avrispmkII -F -p t24 -B1 -P /dev/ttyUSB0 &&\
+
+avr-gcc -Os -mmcu=attiny24 ./display_serial.c -o a.o &&\
+
+avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
+avrdude -c avrispmkII -p t24 -B4 -P /dev/ttyUSB1 -U flash:w:a.bin
+
+#GOFAST
+#avrdude -c avrispmkII -p t24 -B10 -P /dev/ttyUSB1 -U lfuse:w:0xE2:m
+
+#GOSLOW
+#avrdude -c avrispmkII -p t24 -B1 -P /dev/ttyUSB1 -U lfuse:w:0x62:m
+

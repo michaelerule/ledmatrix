@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+avr-gcc -O2 -mmcu=attiny13a ./display_v2.c -o a.o &&\
+avr-objcopy -j .text -j .data -O binary a.o a.bin && du -b ./a.bin\
+&& avrdude -c avrispmkII -F -p t13 -B1 -P /dev/ttyUSB0 -U flash:w:a.bin
+
+

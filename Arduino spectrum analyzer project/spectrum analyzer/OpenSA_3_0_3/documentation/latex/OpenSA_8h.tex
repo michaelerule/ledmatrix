@@ -1,0 +1,146 @@
+\hypertarget{OpenSA_8h}{\section{\-Open\-S\-A.\-h \-File \-Reference}
+\label{OpenSA_8h}\index{\-Open\-S\-A.\-h@{\-Open\-S\-A.\-h}}
+}
+
+
+\-Open\-S\-A -\/-\/ an open-\/source audio visualizer and spectrum analyzer.  
+
+
+{\ttfamily \#include \char`\"{}\-Spectrum\-Graphics.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Spectrum\-F\-H\-T.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Spectrum\-Audio.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Spectrum\-Font.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}\-Spectrum\-Life.\-h\char`\"{}}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{OpenSA_8h_a700f88377bf36711b711f69b06c52f5d}{\#define {\bfseries \-N\-O\-P}~\-\_\-\-\_\-asm\-\_\-\-\_\-(\char`\"{}nop$\backslash$n$\backslash$t\char`\"{});}\label{OpenSA_8h_a700f88377bf36711b711f69b06c52f5d}
+
+\item 
+\hypertarget{OpenSA_8h_ae54d81c0a2c1fcdae88ecb25751a5e20}{\#define {\bfseries delayop}(\-N)~\{ for (uint32\-\_\-t \-\_\-\-\_\-delayop\-\_\-i=(\-N);\-\_\-\-\_\-delayop\-\_\-i;\-\_\-\-\_\-delayop\-\_\-i-\/-\/) \-N\-O\-P \}}\label{OpenSA_8h_ae54d81c0a2c1fcdae88ecb25751a5e20}
+
+\item 
+\hypertarget{OpenSA_8h_af5abd28c44c29b7397c84f1fec4b1d84}{\#define {\bfseries \-A\-L\-P\-H\-A}~200}\label{OpenSA_8h_af5abd28c44c29b7397c84f1fec4b1d84}
+
+\item 
+\hypertarget{OpenSA_8h_a63fdcf8541da7a7636fa8e0025d0dcdd}{\#define {\bfseries \-V\-O\-L\-A\-L\-P\-H\-A}~240}\label{OpenSA_8h_a63fdcf8541da7a7636fa8e0025d0dcdd}
+
+\item 
+\hypertarget{OpenSA_8h_a05a5ffe718aa431d97419a12fb082379}{\#define {\bfseries \-M\-A\-X\-A\-L\-P\-H\-A}~240}\label{OpenSA_8h_a05a5ffe718aa431d97419a12fb082379}
+
+\item 
+\hypertarget{OpenSA_8h_a01e04cb3a03fa1080646bfbcc45728d2}{\#define {\bfseries \-M\-I\-N\-A\-L\-P\-H\-A}~240}\label{OpenSA_8h_a01e04cb3a03fa1080646bfbcc45728d2}
+
+\item 
+\hypertarget{OpenSA_8h_a4c8812858db3648f366a708753fd9975}{\#define {\bfseries \-L\-O\-W\-A\-L\-P\-H\-A}~240}\label{OpenSA_8h_a4c8812858db3648f366a708753fd9975}
+
+\item 
+\hypertarget{OpenSA_8h_a57f811c31fb09de746eea8c7153c2651}{\#define {\bfseries \-L\-I\-R\-P}(\-A\-L\-P\-H\-A, \-A, \-B)~((\-A)$\ast$(\-A\-L\-P\-H\-A)+(256-\/(\-A\-L\-P\-H\-A))$\ast$(\-B)$>$$>$8)}\label{OpenSA_8h_a57f811c31fb09de746eea8c7153c2651}
+
+\item 
+\hypertarget{OpenSA_8h_a1a1e43b2b007d5aa515c987fb10ba00e}{\#define {\bfseries sense\-Pot}~\-A2}\label{OpenSA_8h_a1a1e43b2b007d5aa515c987fb10ba00e}
+
+\item 
+\hypertarget{OpenSA_8h_a352fec4313db424629486e83da01de55}{\#define {\bfseries button\-Pin}~7}\label{OpenSA_8h_a352fec4313db424629486e83da01de55}
+
+\item 
+\hypertarget{OpenSA_8h_abb6ca2f05ac441b27cbf49e6cdca6539}{\#define {\bfseries \-N\-M\-O\-D\-E\-S}~17}\label{OpenSA_8h_abb6ca2f05ac441b27cbf49e6cdca6539}
+
+\item 
+\hypertarget{OpenSA_8h_ade0ac16de71f1b411f933a8b2cd513bc}{\#define {\bfseries clip}(x, a, b)~((x)$<$(a)?(a)\-:(x)$>$(b)?(b)\-:(x))}\label{OpenSA_8h_ade0ac16de71f1b411f933a8b2cd513bc}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{OpenSA_8h_ab982a0c7192629570a134e557791b66d}{void {\bfseries check\-\_\-buttons} ()}\label{OpenSA_8h_ab982a0c7192629570a134e557791b66d}
+
+\item 
+\hypertarget{OpenSA_8h_ae6e8824374c914eb211469183c50e6a0}{void {\bfseries init\-\_\-controls} ()}\label{OpenSA_8h_ae6e8824374c914eb211469183c50e6a0}
+
+\item 
+\hypertarget{OpenSA_8h_a3e49728eb725bbe8bc012304c9971568}{void {\bfseries init\-\_\-\-Open\-S\-A} ()}\label{OpenSA_8h_a3e49728eb725bbe8bc012304c9971568}
+
+\item 
+\hypertarget{OpenSA_8h_a62493241ca7b2f5f19693f4f6970f6aa}{void {\bfseries set\-Levels} (int channel)}\label{OpenSA_8h_a62493241ca7b2f5f19693f4f6970f6aa}
+
+\item 
+\hypertarget{OpenSA_8h_acc72df01ec0f306dc83910b5a743e997}{void {\bfseries draw\-Channel} (int channel, int yoffset, int nrows, int volume, int mode, int flip)}\label{OpenSA_8h_acc72df01ec0f306dc83910b5a743e997}
+
+\item 
+\hypertarget{OpenSA_8h_a042ce093ca73672a37abc3387d7b36a1}{void {\bfseries draw\-Levels} (int \-V\-O\-L\-U\-M\-E)}\label{OpenSA_8h_a042ce093ca73672a37abc3387d7b36a1}
+
+\item 
+\hypertarget{OpenSA_8h_a7fc6aee3431f46d1447728bd76f363c1}{void {\bfseries loop\-\_\-\-Open\-S\-A} ()}\label{OpenSA_8h_a7fc6aee3431f46d1447728bd76f363c1}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{OpenSA_8h_ac40618541c60d944bfd10275331e8c6a}{const uint8\-\_\-t {\bfseries band\-\_\-edges} \mbox{[}$\,$\mbox{]} = \{1,2,3,4,5,7,9,11,15,20,24,32,44,56,76,96,127\}}\label{OpenSA_8h_ac40618541c60d944bfd10275331e8c6a}
+
+\item 
+\hypertarget{OpenSA_8h_a0d5b0de9409e06731586d54be4365b12}{int {\bfseries levels\-L} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_a0d5b0de9409e06731586d54be4365b12}
+
+\item 
+\hypertarget{OpenSA_8h_ab0994b537308a1b0f72ae5607a2baf92}{int {\bfseries levels\-R} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_ab0994b537308a1b0f72ae5607a2baf92}
+
+\item 
+\hypertarget{OpenSA_8h_a4cccbcd22b108e99aeb9714f3c681415}{int {\bfseries max\-L} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_a4cccbcd22b108e99aeb9714f3c681415}
+
+\item 
+\hypertarget{OpenSA_8h_aa0bd9a64ce2eb2a5029f00b5132ddbbb}{int {\bfseries max\-R} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_aa0bd9a64ce2eb2a5029f00b5132ddbbb}
+
+\item 
+\hypertarget{OpenSA_8h_ace8a7bbf318354e13c35c6698d632fcc}{int {\bfseries low\-L} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_ace8a7bbf318354e13c35c6698d632fcc}
+
+\item 
+\hypertarget{OpenSA_8h_ac0da65950b24e03a4c37ad0836d3c675}{int {\bfseries low\-R} \mbox{[}\hyperlink{SpectrumDisplay_8h_aafffdbebac459e968e0f6ac2f50832b3}{\-N\-C\-O\-L\-S}\mbox{]}}\label{OpenSA_8h_ac0da65950b24e03a4c37ad0836d3c675}
+
+\item 
+\hypertarget{OpenSA_8h_ab0a5dc709aee8784411b739be18a9684}{int {\bfseries button\-Debounce} = 0}\label{OpenSA_8h_ab0a5dc709aee8784411b739be18a9684}
+
+\item 
+\hypertarget{OpenSA_8h_a5787730bfacf7497ae7d90acc0e97517}{int {\bfseries visualize\-Mode} = 0}\label{OpenSA_8h_a5787730bfacf7497ae7d90acc0e97517}
+
+\item 
+\hypertarget{OpenSA_8h_a5b2388292a085bf3107fee318d114b4e}{uint32\-\_\-t {\bfseries mode\-Cycle\-Count} = 0}\label{OpenSA_8h_a5b2388292a085bf3107fee318d114b4e}
+
+\item 
+\hypertarget{OpenSA_8h_ae8a2ccf50758dfc3a86d3b58188c0406}{uint16\-\_\-t {\bfseries slide\-\_\-max} = 0}\label{OpenSA_8h_ae8a2ccf50758dfc3a86d3b58188c0406}
+
+\item 
+\hypertarget{OpenSA_8h_ac3d2daa100112c227d6854528443617e}{uint16\-\_\-t {\bfseries slide\-\_\-min} = 0}\label{OpenSA_8h_ac3d2daa100112c227d6854528443617e}
+
+\item 
+\hypertarget{OpenSA_8h_a16fd7bd2ca12987ff8b014e7f81dbed4}{uint8\-\_\-t {\bfseries cycle\-Counter} = 0}\label{OpenSA_8h_a16fd7bd2ca12987ff8b014e7f81dbed4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Open\-S\-A -\/-\/ an open-\/source audio visualizer and spectrum analyzer. \begin{DoxyDate}{\-Date}
+\-August, 2013
+\end{DoxyDate}
+\begin{DoxyCopyright}{\-Copyright}
+\-Michael \-Rule (\href{mailto:mrule7404@gmail.com}{\tt mrule7404@gmail.\-com}) 2013 
+
+\-Joshua \-Holt (\href{mailto:jholt7532@gmail.com}{\tt jholt7532@gmail.\-com}) 2013
+\end{DoxyCopyright}
+\-This file is part of \-Open \-Spectrum \-Analyzer (\-Open\-S\-A).
+
+\-Open\-S\-A is free software\-: you can redistribute it and/or modify it under the terms of the \-G\-N\-U \-General \-Public \-License as published by the \-Free \-Software \-Foundation, either version 3 of the \-License, or (at your option) any later version.
+
+\-Open\-S\-A is distributed in the hope that it will be useful, but \-W\-I\-T\-H\-O\-U\-T \-A\-N\-Y \-W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of \-M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or \-F\-I\-T\-N\-E\-S\-S \-F\-O\-R \-A \-P\-A\-R\-T\-I\-C\-U\-L\-A\-R \-P\-U\-R\-P\-O\-S\-E. \-See the \-G\-N\-U \-General \-Public \-License for more details.
+
+\-You should have received a copy of the \-G\-N\-U \-General \-Public \-License along with \-Open\-S\-A. \-If not, see $<$\href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}$>$.
+
+\-Open \-S\-A supports audio sampling and display.
+
+
+
+ \-Mode \-System
+
+\-The modes operate like different applications that can run on \-Open\-S\-A \-Like an arduino sketch, they each have a setup() and a loop() function. \-They can access the state of \-Audio and the \-Display in order to render music visualizations, demos, even games.
+
+\-Modes are registered at startup in 

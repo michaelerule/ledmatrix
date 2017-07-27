@@ -1,0 +1,23 @@
+Partlist
+
+Exported from micro-plug.sch at 9/23/10 7:14 PM
+
+EAGLE Version 5.10.0 Copyright (c) 1988-2010 CadSoft
+
+Part     Value          Device                    Package            Library  Sheet
+
+C1       0.1uF          CAP0402                   C0402              SparkFun 1
+C2       0.1uF          CAP0402                   C0402              SparkFun 1
+C3       0.1uF          CAP0402                   C0402              SparkFun 1
+C10      0.1uF          CAP0402                   C0402              SparkFun 1
+JP1      FTDI Basic     ARDUINO_SERIAL_PROGRAMPTH 1X06               SparkFun 1
+JP2                     M02PTH                    1X02               SparkFun 1
+JP3                     M06SIP                    1X06               SparkFun 1
+JP6                     M12PTH                    1X12               SparkFun 1
+JP7                     M12PTH                    1X12               SparkFun 1
+LED1     Red            LED0603                   LED-0603           SparkFun 1
+Q1       #MHz           RESONATORSMD              RESONATOR-SMD      SparkFun 1
+R2       10K            RESISTOR0402              C0402              SparkFun 1
+R11      10K            RESISTOR0402              C0402              SparkFun 1
+S2       Reset          TAC_SWITCHSND             TACTILE_SWITCH_SMD SparkFun 1
+U1       ATMEGA168#     ATMEGA168                 TQFP32-08          SparkFun 1
