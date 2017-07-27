@@ -10,6 +10,7 @@
 # Run this script from it's local directory
 #
 
+./maketree.py
 shopt -s extglob
 ./go
 # hopefully removes everything that shouldn't be being tracked as per

@@ -45,3 +45,7 @@ Thumbs.db
 *.blg
 *.log
 
+# Eagle temp files #
+####################
+# TODO: how to escape hash sign?
+# *.*#*
