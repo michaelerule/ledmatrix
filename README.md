@@ -2,6 +2,10 @@
 
 This is a collection of files related to hobbyist LED matrix display projects.
 
+This code is uploaded to Github without curation or documentation in the hope
+that some portions of it may be found useful. If there is community interest
+in any portion or file within this project, please open an issue and the 
+project maintainers will work to improve documentation and usability.
 
 It includes Eagle format board design and schematic files, as well as
 various helper scripts in Python and Jython for automatically preparing 
@@ -12,11 +16,6 @@ This project includes some documents related to an Arduino-based
 audio spectrum visualiser, a collaborative project with Joshua Holt. 
 This project includes a persistence-of-vision LED bar project, a collaborative
 project with Keegan McAllester. 
-
-This code is uploaded to Github without curation or documentation in the hope
-that some portions of it may be found useful. If there is community interest
-in any portion or file within this project, please open an issue and the 
-project maintainers will work to improve documentation and usability.
 
 ### License
 
