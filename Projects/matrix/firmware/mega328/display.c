@@ -379,7 +379,7 @@ int main()
 	// that 	// the RC oscillator runs faster -- but this works too. 
 	OSCCAL=0xFF;
 
-	// I want to configure a timer interrupt to chan the display.
+	// I want to configure a timer interrupt to scan the display.
 	// I determined these values using the AtMega datasheet, and don't exactly
 	// remember what they all mean. 
 	// I know that we turn on timer interrupt 0 and set the prescaler 
