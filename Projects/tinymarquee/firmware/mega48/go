@@ -1,9 +1,0 @@
-#./png2int.py
-#./blues.py | tee blues.c &&\
-#./scale.py | tee scale.c &&\
-#./chromatic_up.py | tee chromatic_up.c &&\
-#./chromatic_down.py | tee chromatic_down.c &&\
-avr-gcc -Os -mmcu=atmega48 ./display.c -o a.o &&\
-avr-objcopy -j .text -j .data -O binary a.o a.bin  && du -b ./a.bin &&\
-avrdude -F -c avrispmkII -p m48 -B1 -P /dev/ttyUSB0 -F -U flash:w:a.bin
-
