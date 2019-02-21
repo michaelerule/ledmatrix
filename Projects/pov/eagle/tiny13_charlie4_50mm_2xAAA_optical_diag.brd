@@ -80,8 +80,7 @@
 <hole x="1" y="1" drill="1"/>
 <hole x="99" y="11.5" drill="1"/>
 <hole x="99" y="1" drill="1"/>
-<text x="37.5" y="3.5" size="1.778" layer="21" font="vector">Treehovse</text>
-<text x="37.5" y="1.5" size="1.778" layer="21" font="vector">slowdanger@gmail.com</text>
+<text x="37.5" y="1.5" size="1.778" layer="21" font="vector">mrule7404@gmail.com</text>
 </plain>
 <libraries>
 <library name="atmel">

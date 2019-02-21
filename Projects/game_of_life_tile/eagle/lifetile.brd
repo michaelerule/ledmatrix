@@ -137,9 +137,8 @@
 <wire x1="23.75" y1="16.75" x2="23.75" y2="17.25" width="0.3048" layer="22"/>
 <wire x1="23.75" y1="17.25" x2="23.75" y2="17.75" width="0.3048" layer="22"/>
 <wire x1="23.75" y1="17.25" x2="22.75" y2="17.25" width="0.3048" layer="22"/>
-<text x="16" y="5.5" size="0.8128" layer="22" font="vector" rot="MR0" align="center">Michael E Rule</text>
-<text x="16" y="6.75" size="0.8128" layer="22" font="vector" rot="MR0" align="center">slowdanger@gmail.com</text>
-<text x="16" y="8" size="0.8128" layer="22" font="vector" rot="MR0" align="center">Treehovse</text>
+<text x="16" y="5.5" size="0.8128" layer="22" font="vector" rot="MR0" align="center">M E Rule</text>
+<text x="16" y="6.75" size="0.8128" layer="22" font="vector" rot="MR0" align="center">mrule7404@gmail.com</text>
 <hole x="2" y="2" drill="2.8"/>
 <hole x="2" y="30" drill="2.8"/>
 <hole x="30" y="30" drill="2.8"/>

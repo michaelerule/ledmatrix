@@ -113,10 +113,8 @@
 <wire x1="0" y1="7.464465625" x2="0.732234375" y2="9.232234375" width="0" layer="20" curve="-45.000051"/>
 <hole x="45.7" y="45.7" drill="3.2"/>
 <wire x1="39.5" y1="48" x2="48" y2="39.5" width="0" layer="20" curve="-180"/>
-<text x="20.1" y="23.6" size="1.016" layer="21" font="vector" ratio="15" rot="R45">Michael Everett Rule</text>
-<text x="34.9" y="38.7" size="1.016" layer="21" font="vector" ratio="15" rot="R45">Treehovse</text>
-<text x="24.2" y="19.4" size="1.016" layer="21" font="vector" ratio="15" rot="R45">AS220 Labs</text>
-<text x="32.7" y="28.1" size="1.016" layer="21" font="vector" ratio="15" rot="R45">slowdanger@gmail.com</text>
+<text x="20.1" y="23.6" size="1.016" layer="21" font="vector" ratio="15" rot="R45">M E Rule</text>
+<text x="32.7" y="28.1" size="1.016" layer="21" font="vector" ratio="15" rot="R45">mrule7404@gmail.com</text>
 </plain>
 <libraries>
 <library name="atmel">

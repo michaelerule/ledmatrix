@@ -129,8 +129,8 @@
 <text x="5.5" y="15" size="1.4224" layer="21" font="vector" ratio="15">-</text>
 <text x="38.5" y="34" size="0.8128" layer="21" font="vector" ratio="15" rot="R90" align="top-right">Limit</text>
 <text x="32.5" y="34" size="0.8128" layer="21" font="vector" ratio="15" rot="R270">PWR</text>
-<text x="40" y="5" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0" align="center-left">Michael Everett Rule</text>
-<text x="0.5" y="5" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0" align="center-right">slowdanger@gmail.com</text>
+<text x="40" y="5" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0" align="center-left">M E Rule</text>
+<text x="0.5" y="5" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0" align="center-right">mrule7404@gmail.com</text>
 <hole x="20.5" y="31.5" drill="1.2"/>
 <hole x="20.5" y="34.5" drill="1.2"/>
 <hole x="20.5" y="28.5" drill="1.2"/>
